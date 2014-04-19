@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Bariol';
-  src: url('Bariol_Regular.otf');
+  src: url('../fonts/Bariol_Regular.otf');
 }
 body {
 	background-color: #FA6900;
@@ -33,7 +33,10 @@ a {
 #iconImage {
 
 }
-#dropDown:hover {
+#dropDownForm:hover {
+	cursor: pointer;
+}
+#dropDownList:hover {
 	cursor: pointer;
 }
 #content {
@@ -48,6 +51,14 @@ a {
 }
 #recipeList {
 	margin: 2%;
+}
+#createRecipe {
+	display: none;
+	margin-left:2%;
+}
+#recipes {
+	display: none;
+	margin-left:2%;
 }
 #footer {
 	color: #fff;

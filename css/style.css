@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Bariol';
+  src: url('Bariol_Regular.otf');
+}
+body {
+	background-color: #FA6900;
+	color: #404040;
+	font-family: Bariol;
+	margin:0;
+	padding:0px;
+	width:300px;
+}
+#icon {
+	margin: auto;
+	margin-top: 5%;
+	width: 50px;
+}
+div {
+	font-family: Bariol;
+}
+img {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: none;
+    user-select: none;
+    border: none;
+    outline: none;
+}
+a {
+    outline: none;
+}
+#iconImage {
+
+}
+#dropDown:hover {
+	cursor: pointer;
+}
+#content {
+	width: 90%;
+	margin: 5% 5%;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 4% 0;
+}
+#createRecipeForm {
+	margin: 2%;
+}
+#recipeList {
+	margin: 2%;
+}
+#footer {
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	margin-bottom: 5%;
+}

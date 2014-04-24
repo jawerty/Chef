@@ -1,8 +1,12 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Chef</title>
 <link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="css/jquery-ui.css">
 <script src="js/jquery-2.1.0.min.js"></script>
+<script src="js/jquery-ui.js"></script>
 <script src="js/drive.js"></script>
 <script src="js/dropbox.js"></script>
 <script src="js/email.js"></script>
@@ -21,25 +25,43 @@
 	<div id="createRecipeForm">
 		<div id="dropDownForm">
 			<div style="display:inline-block;"><img src="images/plus_sign.png" height="30"></img></div>
-			<div style="display:inline-block;vertical-align:top;font-size: 30px;color:#F38630;">Create Recipe</div>
+			<div id="createRecipeText">Create Recipe</div>
 		</div>
 		<div id="createRecipe">
-			Create Recipe Form
+			<input type="text" id="name" placeholder="Recipe Name">
+			<div id="services">
+				<span id="addService">Add Service</span>
+				<div id="servicesList">
+					<div class="service" id="drive"><img src="images/drive_logo.png" width="32"></img></div>
+					<div class="service" id="dropbox"><img src="images/dropbox_logo.png" width="32"></img></div>
+					<div class="service" id="email"><i class="fa fa-envelope fa-lg"></i></div>
+					<div class="service" id="evernote"><img src="images/evernote_logo.png" width="32"></img></div>
+					<div class="service" id="facebook"><img src="images/facebook_logo.png" width="32"></img></div>
+					<div class="service" id="reddit"><img src="images/reddit_logo.png" width="32"></img></div>
+					<div class="service" id="sms"><i class="fa fa-mobile fa-2x"></i></div>
+					<div class="service" id="tumblr"><img src="images/tumblr_logo.png" width="32"></img></div>
+					<div class="service" id="twitter"><img src="images/twitter_logo.png" width="32"></img></div>
+				</div>
+			</div>
+			<textarea id="layout" placeholder="Message Layout"></textarea>
 		</div>
 	</div>
 	<div id="recipeList">
 		<div id="dropDownList">
 			<div style="display:inline-block;"><img src="images/plus_sign.png" height="30"></img></div>
-			<div style="display:inline-block;vertical-align:top;font-size: 30px;color:#F38630;">Your Recipes</div>
+			<div id="recipeListText">Your Recipes</div>
 		</div>
 		<div id="recipes">
-			You don't have any recipes.
+			<p>You don't have any recipes.</p>
 		</div>
 	</div>
 </div>
 
 <div id="footer">
-Copyright 2014 &copy; Jared Wright
+Copyright &copy; 2014 Jared Wright
+</div>
+<div id="dialog" style="display:none;" title="Chef Warning">
+  <p>Limit of 5 Actions per Recipe</p>
 </div>
 </body>
 </html>

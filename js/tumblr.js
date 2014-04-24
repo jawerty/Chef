@@ -1,17 +1,18 @@
 var tumblr = {
-	createTextPost: function(data) {
+	"Create Text Post": function(data) {
 		return 1;
 	},
-	createImagePost: function(data) {
+	"Create Image Post": function(data) {
 		return 1;
 	},
-	createAudioPost: function(data) {
+	"Create Audio Post": function(data) {
 		return 1;
 	},
-	createVideoPost: function(data) {
+	"Create Video Post": function(data) {
 		return 1;
 	},
-	createQuotePost: function(data) {
+	"Create Quote Post": function(data) {
 		return 1;
-	}
+	},
+	name: "Tumblr"
 };

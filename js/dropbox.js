@@ -1,8 +1,9 @@
 var dropbox = {
-	createTextFile: function(data) {
+	"Create Text File": function(data) {
 		return 1;
 	},
-	addFile: function(data) {
+	"Add to Existing File": function(data) {
 		return 1;
-	}
+	},
+	name: "Dropbox"
 };

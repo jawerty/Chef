@@ -1,14 +1,15 @@
 var twitter = {
-	createTweet: function(data) {
+	"Create Tweet": function(data) {
 		return 1;
 	},
-	sendDirectMessage: function(data) {
+	"Send Direct Message": function(data) {
 		return 1;
 	},
-	uploadProPic: function(data) {
+	"Upload Profile Pic": function(data) {
 		return 1;
 	},
-	updateBio: function(data) {
+	"Update Bio": function(data) {
 		return 1;
-	}
+	},
+	name: "Twitter"
 };

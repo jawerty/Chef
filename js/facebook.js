@@ -1,8 +1,9 @@
 var facebook = {
-	createStatus: function(data) {
+	"Create New Status": function(data) {
 		return 1;
 	},
-	uploadPhoto: function(data) {
+	"Upload Photo": function(data) {
 		return 1;
-	}
+	},
+	name: "Facebook"
 };

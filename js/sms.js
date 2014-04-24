@@ -1,5 +1,6 @@
 var sms = {
-	sendSMS: function(data) {
+	"Send SMS": function(data) {
 		return 1;
-	}
-};
+	},
+	name: "SMS"
+}

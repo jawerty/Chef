@@ -1,14 +1,15 @@
 var evernote = {
-	createTextNote: function(data) {
+	"Create Text Note": function(data) {
 		return 1;
 	},
-	createImageNote: function(data) {
+	"Create Image Note": function(data) {
 		return 1;
 	},
-	createAudioNote: function(data) {
+	"Create Audio Note": function(data) {
 		return 1;
 	},
-	appendToNote: function(data) {
+	"Add to Existing Note": function(data) {
 		return 1;
-	}
+	},
+	name: "Evernote"
 };

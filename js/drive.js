@@ -1,8 +1,9 @@
 var drive = {
-	uploadFile: function(data) {
+	"Upload File From Url": function(data) {
 		return 1;
 	},
-	createDoc: function(data) {
+	"Create New Document": function(data) {
 		return 1;
-	}
+	},
+	name: "Google Drive"
 };

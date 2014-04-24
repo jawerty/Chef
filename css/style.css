@@ -9,6 +9,8 @@ body {
 	margin:0;
 	padding:0px;
 	width:300px;
+	overflow: hidden;
+	height: 100px;
 }
 #icon {
 	margin: auto;
@@ -43,8 +45,23 @@ a {
 	width: 90%;
 	margin: 5% 5%;
 	background-color: #fff;
-	border-radius: 10px;
+	border-radius: 5px;
 	padding: 4% 0;
+	min-height: 275px;
+	max-height: 275px;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+#content::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+::-webkit-scrollbar-track {
+}
+ 
+::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+    background-color: #69D2E7;
 }
 #createRecipeForm {
 	margin: 2%;
@@ -52,13 +69,88 @@ a {
 #recipeList {
 	margin: 2%;
 }
+#createRecipeText {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+	display:inline-block;
+	vertical-align:top;
+	font-size: 30px;
+	color:#F38630;
+}
+#recipeListText {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	user-select: none;
+	display:inline-block;
+	vertical-align:top;
+	font-size: 30px;
+	color:#F38630;
+}
+#createRecipeText:hover, #recipeListText:hover {
+	opacity: .7;
+}
 #createRecipe {
 	display: none;
-	margin-left:2%;
+	width: 254px;
 }
 #recipes {
+	width: 254px;
+	overflow: hidden;
+	position: relative;
 	display: none;
-	margin-left:2%;
+	padding-left: 2%;
+}
+#name, #layout {
+	border-radius: 2px;
+	outline: none;
+	border:none;
+	font-size: 15px;
+	color: #333;
+	padding: 2%;
+	width: 200px;
+	margin-left: 1%;
+}
+#name:focus, #layout:focus {
+	border: 1px solid #ccc;
+}
+#layout {
+	min-height: 50px;
+	resize: none;
+}
+#services {
+	color: #F38630;
+	margin: 2%;
+	font-size: 25px;
+	padding: 2% 0;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	width: 244px;
+}
+#addService {
+
+}
+#addService:hover {
+	cursor: pointer;
+	opacity: .7;
+}
+.service {
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 2%;
+}
+.service:hover {
+	cursor: pointer;
+	border: 1px solid #F38630;
+}
+#servicesList {
+	display: none;
+	overflow: hidden;
+	position: relative;
+	padding: 1% 0;
 }
 #footer {
 	color: #fff;

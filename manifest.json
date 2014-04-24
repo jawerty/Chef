@@ -19,7 +19,16 @@
    ],
    "js": [
      "js/jquery-2.1.0.min.js",
-     "js/chef.js"
+     "js/chef.js",
+     "js/drive.js",
+     "js/dropbox.js",
+     "js/email.js",
+     "js/evernote.js",
+     "js/facebook.js",
+     "js/reddit.js",
+     "js/sms.js",
+     "js/tumblr.js",
+     "js/twitter.js"
     ]
   }
 
@@ -35,6 +44,7 @@
       "19": "images/chef_icon_128_radius.png" ,
       "38": "images/chef_icon_128_radius.png" 
     },
+    
     "default_title": "Chef",
     "default_popup": "index.html"
   },

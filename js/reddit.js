@@ -1,8 +1,9 @@
 var reddit = {
-	submitTextPost: function(data) {
+	"Submit Text Post": function(data) {
 		return 1;
 	},
-	submitLinkPost: function(data) {
+	"Submit Link Post": function(data) {
 		return 1;
-	}
+	},
+	name: "Reddit"
 }

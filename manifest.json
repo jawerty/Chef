@@ -28,20 +28,24 @@
      "js/reddit.js",
      "js/sms.js",
      "js/tumblr.js",
-     "js/twitter.js"
+     "js/twitter.js",
+     "js/getClick.js"
     ]
   }
 
   ],
   "permissions": [
     "webRequest",
+    "contextMenus",
+    "<all_urls>",
     "tabs",
     "http://*/*",
     "https://*/*"
   ],
   "browser_action": {
-    "default_icon": {                    
-      "19": "images/chef_icon_128_radius.png" ,
+    "default_icon": {   
+      "16": "images/chef_icon_128_radius.png",                 
+      "19": "images/chef_icon_128_radius.png",
       "38": "images/chef_icon_128_radius.png" 
     },
     

@@ -1,17 +1,37 @@
 var tumblr = {
-	"Create Text Post": function(data) {
+	"Create Text Post": function(data, options) {
+		if (options.formData == true) {
+
+		}
+
 		return 1;
 	},
-	"Create Image Post": function(data) {
+	"Create Link Post": function(data, options) {
+		if (options.formData == true) {
+
+		}
+
 		return 1;
 	},
-	"Create Audio Post": function(data) {
+	"Create Audio Post": function(data, options) {
+		if (options.formData == true) {
+
+		}
+
 		return 1;
 	},
-	"Create Video Post": function(data) {
+	"Create Video Post": function(data, options) {
+		if (options.formData == true) {
+
+		}
+
 		return 1;
 	},
-	"Create Quote Post": function(data) {
+	"Create Quote Post": function(data, options) {
+		if (options.formData == true) {
+
+		}
+
 		return 1;
 	},
 	name: "Tumblr"

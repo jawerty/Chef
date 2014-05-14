@@ -25,7 +25,7 @@
 	<div id="createRecipeForm">
 		<div id="dropDownForm">
 			<div style="display:inline-block;"><img src="images/plus_sign.png" height="30"></img></div>
-			<div id="createRecipeText">Create Recipe</div>
+			<div id="createRecipeText">New Recipe</div>
 		</div>
 		<div id="createRecipe">
 			<input type="text" id="name" placeholder="Recipe Name">
@@ -43,7 +43,8 @@
 					<div class="service" id="twitter"><img src="images/twitter_logo.png" width="32"></img></div>
 				</div>
 			</div>
-			<textarea id="layout" placeholder="Message Layout"></textarea>
+			<textarea id="layout" placeholder="Message"></textarea>
+			<div style="text-align:center"><button action="Chef.saveRecipe()" id="createButton">Create</button></div>
 		</div>
 	</div>
 	<div id="recipeList">
@@ -62,6 +63,9 @@ Copyright &copy; 2014 Jared Wright
 </div>
 <div id="dialog" style="display:none;" title="Chef Warning">
   <p>Limit of 5 Actions per Recipe</p>
+</div>
+<div id="dialog1" style="display:none;" title="Chef Warning">
+  <p>You must choose at least one Action</p>
 </div>
 </body>
 </html>

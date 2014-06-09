@@ -1,1 +1,0 @@
-chrome.contextMenus.removeAll()

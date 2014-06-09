@@ -12,10 +12,10 @@ $(document).mousedown(function(event) {
     switch (event.which) {
         case 3:
             if (event.target.src) {
-            	console.log("image")
+            	console.log(event.target.src)
             	sendContent(event.target.src)
             } else {
-            	console.log("text")
+            	console.log(window.getSelection().toString());
             	sendContent(window.getSelection().toString());
             }
             break;

@@ -71,7 +71,6 @@ function getValues(){
 
 
 $(document).ready(function(){
-
 	function Alert(message) {
 		alert(message)
 		return false;
@@ -89,27 +88,34 @@ $(document).ready(function(){
 
 	  li.on("click", function(e) {
 	  	div.slideToggle(250)
-	    //Chef.indexedDB.deleteRecipe(row.timeStamp);
 	  });
 
 	  console.log(row)
 
-	  if (row.message != "" || row.message != null) div.append("<p>\""+row.message+"\"</p>");
-	  	
+	  if (row.message) div.append("<p style='margin-left: 1%;color: #333; font-size: 14px;'>\""+row.message+"\"</p>");
+
 	  if (row.actions instanceof Array) {
 	  	  for (i=0; i<row.actions.length; i++) {
-		   	  div.append(row.actions[i] + "<br>");
+	  	  	  for (var s in Services) {
+	  	  	  	if (Services[s][row.actions[i]]) {
+	  	  	  		console.log(Services[s][row.actions[i]])
+	  	  	  		service = s;
+	  	  	  		div.append("<label style='color: #333; font-size: 14px;'>"+service+" - "+row.actions[i] + "</label><br>");
+	  	  	  	}
+	  	  	  	
+	  	  	  }
+		   	  
 		  } 
 	  }
 
 	  deleteBtn = $("<button>")
 	  deleteBtn.text("Delete")
-
+	  deleteBtn.attr("id", "deleteButton")
 	  deleteBtn.on("click", function(e) {
 	  	Chef.indexedDB.deleteRecipe(row.timeStamp)
 	  })
 
-	  div.append("<br>").append(deleteBtn)
+	  div.append(deleteBtn)
 	  div.css("display", "none");
 	  div.css("margin", "2%")
 
@@ -117,6 +123,7 @@ $(document).ready(function(){
 	  wrapper.append(div)
 	  recipes.append(wrapper);
 	}
+
 	Chef.indexedDB.db = null;
 
 	Chef.indexedDB.open = function() {
@@ -158,7 +165,6 @@ $(document).ready(function(){
 	  });
 
 	  request.onsuccess = function(e) {
-	    // Re-render all the todo's
 	    Chef.indexedDB.getAllRecipeItems();
 	  };
 
@@ -218,7 +224,7 @@ $(document).ready(function(){
 		Chef.saveRecipe()
 	});
 	$("#dropDownForm").on("click", function(){
-		if (plusSign1 == true) {
+		if (plusSign1 === true) {
 			$("#dropDownForm img").attr("src", "images/minus_sign.png")
 			plusSign1 = false
 		} else {
@@ -230,7 +236,7 @@ $(document).ready(function(){
 
 	})
 	$("#dropDownList").on("click", function(){
-		if (plusSign2 == true) {
+		if (plusSign2 === true) {
 			$("#dropDownList img").attr("src", "images/minus_sign.png")
 			plusSign2 = false
 		} else {
@@ -259,7 +265,7 @@ $(document).ready(function(){
 			}
 
 			actions_text.pop()
-			
+
 			for (i=0;i<actions_text.length;i++) {
 				actions.append("<option>"+actions_text[i]+"</option>")
 			}
@@ -272,7 +278,7 @@ $(document).ready(function(){
 			});
 
 			title.text(Services[$(this).attr('id')].name);
-
+			title.attr("data", Services[$(this).attr('id')])
 			wrapper.append(title)
 			wrapper.append(actions)
 			wrapper.append("<br>")

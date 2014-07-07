@@ -10,12 +10,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 var Services = {
 	"dropbox": dropbox,
-	"drive": drive,
-	"email": email,
+	"google drive": drive,
 	"evernote": evernote,
 	"facebook": facebook,
 	"reddit": reddit,
-	"sms": sms,
 	"tumblr": tumblr,
 	"twitter": twitter
 }
@@ -39,12 +37,11 @@ var Chef = {
 		return x;
 	},
 	saveRecipe: function() {	
-		input = getValues();
-		if (typeof input[2][0] == "undefined") {
+		var _input = getValues();
+		if (Object.keys(_input[2]).length === 0) {
 			$( "#dialog1" ).dialog({width: "200px", resizable: false});
 		} else {	
-			Chef.indexedDB.addRecipe(input[0], input[1], input[2], [])
-			console.log(input[2][0])
+			Chef.indexedDB.addRecipe(_input[0], _input[1], _input[2], [])
 		}
 	},
 	runRecipe: function(recipeName, timeStamp, actions, data) {
@@ -56,13 +53,28 @@ var Chef = {
 }
 
 function getValues(){
-	actions = []
+	actions = {}
+	inputs = 1;
 	for (i = 0; i<$("#createRecipeForm select option:selected").length; i++){
-		text = $("#createRecipeForm select option:selected")[i].innerText
-		actions.push(text)
+		console.log(typeof actions[$("#createRecipeForm span")[i+1].innerText.toLowerCase()] == "undefined")
+		if (typeof actions[$("#createRecipeForm span")[i+1].innerText.toLowerCase()] == "undefined") {
+			if ($($("#createRecipeForm span")[i+1]).parent().has("input").length > 0) {
+				inputs++;
+				actions[$("#createRecipeForm span")[i+1].innerText.toLowerCase()] = [{action: $("#createRecipeForm select option:selected")[i].innerText, input: $("#createRecipeForm #services input")[inputs-1].value }]
+			} else {
+				actions[$("#createRecipeForm span")[i+1].innerText.toLowerCase()] = [{action: $("#createRecipeForm select option:selected")[i].innerText}]
+			}
+		} else {
+			if ($($("#createRecipeForm span")[i+1]).parent().has("input").length > 0) {
+				inputs++;
+				actions[$("#createRecipeForm span")[i+1].innerText.toLowerCase()].push({action: $("#createRecipeForm select option:selected")[i].innerText, input: $("#createRecipeForm #services input")[inputs-1].value })			
+			} else {
+				actions[$("#createRecipeForm span")[i+1].innerText.toLowerCase()].push({action: $("#createRecipeForm select option:selected")[i].innerText })							
+			}
+		}
 	}
 
-	console.log(actions)
+	console.log("actions: "+JSON.stringify(actions));
 	recipeName = $("#name").val();
 	recipeMessage = $("#layout").val();
 
@@ -94,17 +106,13 @@ $(document).ready(function(){
 
 	  if (row.message) div.append("<p style='margin-left: 1%;color: #333; font-size: 14px;'>\""+row.message+"\"</p>");
 
-	  if (row.actions instanceof Array) {
-	  	  for (i=0; i<row.actions.length; i++) {
-	  	  	  for (var s in Services) {
-	  	  	  	if (Services[s][row.actions[i]]) {
-	  	  	  		console.log(Services[s][row.actions[i]])
-	  	  	  		service = s;
-	  	  	  		div.append("<label style='color: #333; font-size: 14px;'>"+service+" - "+row.actions[i] + "</label><br>");
-	  	  	  	}
-	  	  	  	
-	  	  	  }
-		   	  
+	  if (row.actions.constructor == Object) {
+	  	  for (var key in row.actions) {
+	  	  	console.log(row.actions[key])
+	  	  	for(i=0;i<row.actions[key].length;i++) {
+	  	  	  	div.append("<label style='color: #333; font-size: 14px;'>"+key+" - "+row.actions[key][i].action+"</label><br>");
+	  	  
+		   	}
 		  } 
 	  }
 
@@ -257,7 +265,6 @@ $(document).ready(function(){
 			actions = $("<select>")
 
 			actions.attr("class", Services[$(this).attr('id')])
-
 			actions_text = []
 			for (var key in Services[$(this).attr('id')]) {
 				console.log(key);
@@ -277,14 +284,27 @@ $(document).ready(function(){
 				inserted--
 			});
 
+			
 			title.text(Services[$(this).attr('id')].name);
-			title.attr("data", Services[$(this).attr('id')])
-			wrapper.append(title)
-			wrapper.append(actions)
-			wrapper.append("<br>")
-			$("#servicesList").before(wrapper)
+			title.attr("data", Services[$(this).attr('id')]);
+
+			wrapper.append(title);
+			wrapper.append(actions);
+			wrapper.append("<br>");
+			$("#servicesList").before(wrapper);
 			inserted++;
+			for (var key in Services[$(this).attr('id')]) {
+				if (key == actions.find(":selected").text()) {
+					wrapper.append(Services[$(this).attr('id')][key]("", {formData: true}));
+				}
+			}
+
+			
 		}	
-	})
+	});
+	$("#services selected").on("change", function(e) {
+		console.log("target: "+e.target.value)
+		wrapper.append(Services[$(this).prev().text().toLowerCase()][($this).val()]("", {formData: true}));
+	});
 	Chef.init()
 });
